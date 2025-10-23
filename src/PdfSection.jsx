@@ -1,5 +1,10 @@
-import { Page } from "react-pdf";
-import { usePdfDocument } from "./usePdfDocument";
+import { Document, Page } from "react-pdf";
+import { pdfjs } from "react-pdf";
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/build/pdf.worker.min.mjs",
+  import.meta.url
+).toString();
 
 const PDF_WIDTH_DEFAULT = 1080;
 const PDF_HEIGHT_DEFAULT = 1440;
@@ -13,22 +18,17 @@ export const PdfSection = ({
   width = PDF_WIDTH_DEFAULT,
   height = PDF_HEIGHT_DEFAULT,
 }) => {
-  const { pdfDocument } = usePdfDocument({ url: pdfUrl });
-
-  if (!pdfDocument) {
-    return null;
-  }
-
   return (
-    <Page
-      pdf={pdfDocument}
-      devicePixelRatio={PDF_DEVICE_PIXEL_RATIO_DEFAULT}
-      scale={1}
-      pageNumber={pageNumber}
-      width={width}
-      height={height}
-      renderAnnotationLayer={false}
-      renderTextLayer={false}
-    />
+    <Document file={pdfUrl}>
+      <Page
+        devicePixelRatio={PDF_DEVICE_PIXEL_RATIO_DEFAULT}
+        scale={1}
+        pageNumber={pageNumber}
+        width={width}
+        height={height}
+        renderAnnotationLayer={false}
+        renderTextLayer={false}
+      />
+    </Document>
   );
 };
