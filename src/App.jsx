@@ -34,7 +34,7 @@ export const App = () => {
       </button>
       {section === PDF_SECTION && (
         <div>
-          <h5>PDF only</h5>
+          <h5>PDF section</h5>
           <PdfSection />
         </div>
       )}

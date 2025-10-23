@@ -4,7 +4,7 @@ Check memory leakage of react-pdf with vite
 
 ## Reproduction steps
 
-Run app locally
+Run app locally or vercel build [here](https://react-pdf-memory-test.vercel.app/)
 
 Steps
 
@@ -23,10 +23,11 @@ Actual
 
 ![Chrome Task Manager showing memory usage](chrome-task-manager.png)
 
-
+![App screenshot](app.png)
 
 ## Notes
 
 - React strict mode was switched off to not affect memory
 - Hot reloading was switched off to not affect memory
 - Newest versions of packages were used (vite, react, react-pdf)
+- High Device Pixel Rate (10) was used to amplify an effect
